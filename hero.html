@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kayla Cullen | Product Designer</title>
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #151922;
+      --text: #f5f7fb;
+      --muted: #b9c0cf;
+      --line: #262d3d;
+      --accent: #d9b8c4;
+      --accent-dark: #c99cab;
+      --card: #131722;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #0f1115 0%, #10141c 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 17, 21, 0.78);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 72px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(217, 184, 196, 0.12);
+      color: #efdce2;
+      border: 1px solid rgba(217, 184, 196, 0.18);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 5vw, 5rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      font-size: 1.06rem;
+      color: var(--muted);
+      max-width: 610px;
+      margin: 0 0 28px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 700;
+      transition: 0.18s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #18161a;
+      border-color: transparent;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: transparent;
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .micro-copy {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: #d4dae7;
+      font-size: 0.94rem;
+    }
+
+    .mockup-card {
+      background: linear-gradient(180deg, #181d29 0%, #10141c 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .browser-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #596275;
+    }
+
+    .screen {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: #f7f8fb;
+    }
+
+    .screen-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px;
+      background: #ffffff;
+      color: #202431;
+      font-size: 0.82rem;
+      border-bottom: 1px solid #e8ebf0;
+    }
+
+    .screen-body {
+      padding: 18px;
+      background: linear-gradient(180deg, #f7f8fb 0%, #eef2f8 100%);
+    }
+
+    .ui-chip {
+      display: inline-block;
+      background: #e7edf6;
+      color: #455064;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      margin: 0 8px 8px 0;
+    }
+
+    .ui-card {
+      background: #fff;
+      border: 1px solid #e6ebf4;
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(25, 35, 59, 0.07);
+      margin-top: 14px;
+    }
+
+    .ui-card h3,
+    .project-card h3,
+    .about-card h3,
+    .section-heading {
+      margin: 0 0 8px;
+    }
+
+    .ui-lines {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .line {
+      height: 10px;
+      border-radius: 999px;
+      background: #ebeff6;
+    }
+
+    .line.short { width: 38%; }
+    .line.mid { width: 68%; }
+    .line.long { width: 100%; }
+
+    section {
+      padding: 26px 0 18px;
+    }
+
+    .section-heading {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      margin: 0 0 24px;
+      max-width: 720px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .project-card,
+    .about-card,
+    .contact-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .project-thumb {
+      aspect-ratio: 16 / 10;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(217,184,196,0.30), rgba(123, 168, 216, 0.30));
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      color: #dce3f0;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .contact-card {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 30px 0 64px;
+    }
+
+    .footer {
+      padding: 0 0 34px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 46px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .button-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .contact-card {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top">Kayla Cullen</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">UX/UI • Product Thinking • Real Projects</div>
+          <h1>Product Designer creating clean, user-friendly digital experiences.</h1>
+          <p>
+            I design thoughtful websites and product experiences that improve clarity, trust, and usability. My work combines customer insight, visual design, and practical problem solving.
+          </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="#work">View My Work</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
+          <div class="micro-copy">
+            <span>Case studies</span>
+            <span>UI design</span>
+            <span>User-focused problem solving</span>
+          </div>
+        </div>
+
+        <div class="mockup-card" aria-label="Featured portfolio mockup preview">
+          <div class="browser-bar">
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+            <span class="browser-dot"></span>
+          </div>
+          <div class="screen">
+            <div class="screen-top">
+              <strong>Remote Job Board Redesign</strong>
+              <span>Featured Case Study</span>
+            </div>
+            <div class="screen-body">
+              <span class="ui-chip">Remote jobs</span>
+              <span class="ui-chip">Trust-first UX</span>
+              <span class="ui-chip">Responsive layout</span>
+              <div class="ui-card">
+                <h3 style="color:#202431; font-size:1rem;">Today's Remote Job Postings</h3>
+                <div class="ui-lines">
+                  <div class="line long"></div>
+                  <div class="line mid"></div>
+                  <div class="line short"></div>
+                </div>
+              </div>
+              <div class="ui-card">
+                <h3 style="color:#202431; font-size:1rem;">Clean categories and easier scanning</h3>
+                <div class="ui-lines">
+                  <div class="line long"></div>
+                  <div class="line long"></div>
+                  <div class="line mid"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="container">
+        <h2 class="section-heading">Selected Work</h2>
+        <p class="section-sub">A few projects that show my design thinking, interface design, and problem-solving approach.</p>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-thumb"></div>
+            <h3>Remote Job Board Website</h3>
+            <p>Redesigned a remote jobs platform to feel more trustworthy, easier to browse, and less overwhelming for busy job seekers.</p>
+            <div class="tag-row">
+              <span class="tag">UX/UI</span>
+              <span class="tag">Website Design</span>
+              <span class="tag">Case Study</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb"></div>
+            <h3>Food Ordering App Concept</h3>
+            <p>Created a mobile product concept focused on a clean ordering flow, clear payment steps, and a polished confirmation experience.</p>
+            <div class="tag-row">
+              <span class="tag">Mobile Design</span>
+              <span class="tag">UI Design</span>
+              <span class="tag">User Flow</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-thumb"></div>
+            <h3>Accounting Website Redesign</h3>
+            <p>Improved clarity, professionalism, and trust through cleaner structure, better messaging, and more intentional layout choices.</p>
+            <div class="tag-row">
+              <span class="tag">Web Redesign</span>
+              <span class="tag">Brand Trust</span>
+              <span class="tag">UX Strategy</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-card">
+          <h2 class="section-heading" style="font-size:1.8rem; margin-bottom:12px;">About Me</h2>
+          <p style="color:var(--muted); margin:0;">
+            I’m a self-taught product designer with a background in customer service and operations. That experience helps me design with empathy, solve practical problems, and create digital experiences that feel clear and useful.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <h3>Skills</h3>
+          <div class="skills">
+            <span class="tag">UX Research</span>
+            <span class="tag">Wireframing</span>
+            <span class="tag">UI Design</span>
+            <span class="tag">User Flows</span>
+            <span class="tag">Prototyping</span>
+            <span class="tag">Visual Design</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <h2 class="section-heading" style="margin-bottom:10px;">Let’s connect</h2>
+            <p class="section-sub" style="margin:0; max-width:560px;">
+              Looking for a product designer with a strong customer perspective and a clean, thoughtful design style?
+            </p>
+          </div>
+          <div class="button-row" style="margin:0;">
+            <a class="btn btn-primary" href="mailto:your@email.com">Email Me</a>
+            <a class="btn btn-secondary" href="#top">Back to Top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 Kayla Cullen. Built for portfolio use.</div>
+  </footer>
+</body>
+</html>
